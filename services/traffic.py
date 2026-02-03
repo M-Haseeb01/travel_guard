@@ -23,7 +23,8 @@ def get_live_traffic(city: str) -> str:
     """
 
     prompt = f"""
-Check today's traffic situation in {city}.
+Check today's traffic situation in {city} and check weather any alert based on extreme weather or traffic has been
+given for the {city} .IF yes then Genrate one liner explanation.
 Respond with ONLY one word:
 Good, Medium, or Poor.
 """
