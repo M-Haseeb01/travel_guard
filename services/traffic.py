@@ -23,11 +23,15 @@ def get_live_traffic(city: str) -> str:
     """
 
     prompt = f"""
-Check today's traffic situation in {city} and check weather any alert based on extreme weather or traffic has been
-given for the {city} .IF yes then Genrate one liner explanation.
-Respond with ONLY one word:
-Good, Medium, or Poor.
-"""
+    Check today's traffic conditions in {city} and identify whether any extreme weather or traffic alerts
+    have been issued for {city}.
+    
+    If alerts exist, consider their severity and potential impact on travel.
+    
+    Respond with ONLY one word (no explanation, no symbols):
+    Good, Medium, or Poor
+    """
+
 
     try:
         res = genai_client.models.generate_content(
