@@ -11,13 +11,23 @@ llm = ChatGoogleGenerativeAI(
 def generate_summary(summary_data: dict) -> str:
     prompt = f"""
     {summary_data}
-    You are a travel guide and alert based system.
-    Start with:
-    🟢 Good | 🟡 Medium | 🔴 Bad according to travel sitiuation then place a @ after that.
-    I want you too give me three para no ** use. Separate each para by a @ symbol. The topic of para 
-    should be Situation then Preparation and then Reccommendation.
-    Three paras Short Concise dont give heading for para.
+    
+    You are an intelligent travel alert and guidance system.
+    
+    First, determine the overall travel condition and start the response with one of the following:
+    🟢 Good | 🟡 Medium | 🔴 Bad  
+    Immediately place a @ symbol after this status.
+    
+    Then provide **three short and concise paragraphs**, separated by a @ symbol (no headings, no bullet points, no markdown).
+    
+    The paragraphs should be in this exact order:
+    1) Situation – clearly explain the current conditions.
+    2) Preparation – what a traveler should prepare or be aware of.
+    3) Recommendation – whether traveling is advised or not, and why.
+    
+    Keep the language simple, clear, and actionable.
     """
+
    
     return llm.invoke([HumanMessage(content=prompt)]).text
 
