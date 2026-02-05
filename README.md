@@ -1,7 +1,7 @@
 # Trek Sentry
 
 ## Overview
-Trek Sentry is a real-time travel safety and disaster awareness platform that aggregates live global data—including weather, floods, storms, traffic conditions, earthquakes, and air quality—and converts it into clear, actionable alerts. Using Google Gemini 3’s reasoning capabilities, the system transforms complex technical data into simple guidance, helping users quickly decide whether it is safe to travel.
+Trek Sentry is a real-time travel safety and disaster awareness platform that aggregates live global data including weather, floods, storms, traffic conditions, earthquakes, and air quality and converts it into clear, actionable alerts. Using Google Gemini 3’s reasoning capabilities, the system transforms complex technical data into simple guidance, helping users quickly decide whether it is safe to travel.
 
 ## Problem
 Travelers often face fragmented, technical, and hard-to-interpret information during rapidly changing conditions. Critical updates are scattered across multiple sources, making it difficult to assess risk quickly and make informed travel decisions.
