@@ -1,4 +1,4 @@
-#Trek Sentry
+# Trek Sentry
 
 Overview
 
@@ -10,19 +10,13 @@ Travelers often face fragmented, technical, and hard-to-interpret information du
 
 Solution
 
-Trek Sentry centralizes live global data and uses Google Gemini 3 to:
-
-Analyze real-time environmental and traffic conditions
-
-Summarize situations in plain, non-technical language
-
-Provide preparation guidance and travel recommendations
-
-Translate alerts into 100+ languages
-
-Enable optional audio alerts via text-to-speech
-
-All insights are delivered through a single, simple interface.
+-Trek Sentry centralizes live global data and uses Google Gemini 3 to:
+-Analyze real-time environmental and traffic conditions
+-Summarize situations in plain, non-technical language
+-Provide preparation guidance and travel recommendations
+-Translate alerts into 100+ languages
+-Enable optional audio alerts via text-to-speech
+-All insights are delivered through a single, simple interface.
 
 Gemini 3 Integration
 
@@ -34,4 +28,4 @@ Trek Sentry is designed for students, travelers, and globally mobile users. By p
 
 Tech Stack
 
-HTML, CSS, JavaScript, Python, Flask, Google Gemini 3, Open-Meteo APIs, USGS Earthquake API, aiohttp, Hugging Face, Piper TTS, Vercel
+HTML, CSS, JavaScript, Python, Flask, Google Gemini 3, Open-Meteo APIs, USGS Earthquake API, aiohttp, Hugging Face,Goggle Search Grounding, Piper TTS, Vercel
