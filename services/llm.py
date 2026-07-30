@@ -4,7 +4,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-3-flash-preview",
+    model="gemini-3.5-flash",
     temperature=0.4
 ) 
 
