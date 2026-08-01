@@ -1,38 +1,88 @@
-from langchain_core.messages import HumanMessage
-from config import GOOGLE_API_KEY
-from langchain_google_genai import ChatGoogleGenerativeAI
+import os
+from groq import Groq
 
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-3.5-flash",
-    temperature=0.4
-) 
+groq_client = Groq(
+    api_key=os.getenv("GROQ_API_KEY")
+)
+
 
 def generate_summary(summary_data: dict) -> str:
-    prompt = f"""
-    {summary_data}
-    
-    You are an intelligent travel alert and guidance system.
-    
-    First, determine the overall travel condition and start the response with one of the following:
-    🟢 Good | 🟡 Medium | 🔴 Bad  
-    Immediately place a @ symbol after this status.
-    
-    Then provide **three short and concise paragraphs**, separated by a @ symbol (no headings, no bullet points, no markdown).
-    
-    The paragraphs should be in this exact order:
-    1) Situation – clearly explain the current conditions.
-    2) Preparation – what a traveler should prepare or be aware of.
-    3) Recommendation – whether traveling is advised or not, and why.
-    
-    Keep the language simple, clear, and actionable.
-    """
 
-   
-    return llm.invoke([HumanMessage(content=prompt)]).text
+    prompt = f"""
+Travel information:
+
+{summary_data}
+
+You are an intelligent travel alert and guidance system.
+
+First determine the overall travel condition.
+
+Start the response with exactly one:
+
+🟢 Good
+🟡 Medium
+🔴 Bad
+
+Immediately place @ after the status.
+
+Then provide exactly three short paragraphs separated by @.
+
+Paragraph 1:
+Situation – clearly explain the current conditions.
+
+Paragraph 2:
+Preparation – explain what a traveler should prepare for or be aware of.
+
+Paragraph 3:
+Recommendation – explain whether traveling is advised and why.
+
+Do not use headings.
+Do not use bullet points.
+Do not use markdown.
+
+Keep the language simple, clear and actionable.
+"""
+
+    response = groq_client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0.4
+    )
+
+    return response.choices[0].message.content
 
 
 def translate_text(text: str, language: str) -> str:
-    """Translate text using LLM."""
-    prompt = f"Translate the following text to {language} keeping meaning and emojis. Do not explain:\n{text}"
-    return llm.invoke([HumanMessage(content=prompt)]).text
+
+    prompt = f"""
+Translate the following text into {language}.
+
+Keep:
+- meaning
+- emojis
+- formatting
+
+Do not explain anything.
+
+Text:
+{text}
+"""
+
+    response = groq_client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0.2
+    )
+
+    return response.choices[0].message.content
