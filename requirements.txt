@@ -5,3 +5,8 @@ google-generativeai
 langchain
 langchain-google-genai
 gradio-client
+Flask
+aiohttp
+python-dotenv
+groq
+gradio-client
